@@ -1,0 +1,10 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // MODO PÚBLICO TEMPORÁRIO: qualquer visitante pode ler e alterar o documento do evento.
+    // Use apenas para teste/evento descartável. Apague o banco e feche as regras após o evento.
+    match /event/{document} {
+      allow read, write: if true;
+    }
+  }
+}
